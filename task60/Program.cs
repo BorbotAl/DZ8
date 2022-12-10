@@ -32,17 +32,18 @@ void PrintMatrixInRow(int[,,] matrix)
         {
             for (int m = 0; m < matrix.GetLength(2); m++)
             {
-                Console.WriteLine($"{matrix[i, j, m]} ({i}, {j}, {m})");
+                if (j < matrix.GetLength(1) - 1 || m < matrix.GetLength(2) - 1) Console.Write($"{matrix[i, j, m]} ({i}, {j}, {m}); ");
+                else Console.WriteLine($"{matrix[i, j, m]} ({i}, {j}, {m})");
             }
         }
     }
 }
 
 Console.WriteLine("Введите параметры трёхмерного массива");
-Console.Write("Введите длину массива: ");
+Console.Write("Введите число строк массива: ");
 int userRows = Convert.ToInt32(Console.ReadLine());
 
-Console.Write("Введите ширину трёхмерного массива: ");
+Console.Write("Введите число столбцов трёхмерного массива: ");
 int userColumns = Convert.ToInt32(Console.ReadLine());
 
 Console.Write("Введите глубину трёхмерного массива: ");
