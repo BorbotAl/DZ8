@@ -60,36 +60,20 @@ void PrintArray(int[] array)
     Console.WriteLine("]");
 }
 
-int[] IndexsMinSum(int[] array)
+int IndexMinSum(int[] array)
 {
     int indexOfMin = 0;
     for (int i = 1; i < array.Length; i++)
     {
         if (array[i] < array[indexOfMin]) indexOfMin = i;
     }
-    int countOfMin = 0;
-    for (int i = 0; i < array.Length; i++)
-    {
-        if (array[indexOfMin] == array[i]) countOfMin++;
-    }
-    int[] indexsOfMin = new int[countOfMin];
-    int index = 0;
-    for (int i = 0; i < array.Length; i++)
-    {
-        if (array[i] == array[indexOfMin])
-        {
-            indexsOfMin[index] = i + 1;
-            index++;
-        }
-    }
-    return indexsOfMin;
+    return indexOfMin;
 }
 
-int[,] userMatrix = CreateMatrixRndInt(5, 2, 0, 1);
+int[,] userMatrix = CreateMatrixRndInt(5, 2, 0, 10);
 PrintMatrix(userMatrix);
 Console.WriteLine();
 int[] sumOfRows = SumOfRows(userMatrix);
 PrintArray(sumOfRows);
-int[] result = IndexsMinSum(sumOfRows);
-Console.Write("Номер строки с наименьшей суммой элементов --> ");
-PrintArray(result);
+int result = IndexMinSum(sumOfRows);
+Console.Write($"Номер строки с наименьшей суммой элементов --> {result + 1}");
